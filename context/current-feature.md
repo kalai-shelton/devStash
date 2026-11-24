@@ -8,7 +8,7 @@ Dashboard UI Phase 3
 
 <!-- Not Started|In Progress|Completed -->
 
-In Progress
+Completed
 
 ## Goals
 
@@ -42,3 +42,4 @@ In Progress
 - Mock data for dashboard UI (src/lib/mock-data.ts)
 - Dashboard UI Phase 1: shadcn/ui setup, /dashboard route, dark mode default, top bar with search and New Item button, sidebar/main placeholders
 - Dashboard UI Phase 2: collapsible sidebar (icon rail on desktop, drawer below 1024px), item types with links to /items/TYPE, favorite and recent collections, user avatar area, sidebar toggle in top bar
+- Dashboard UI Phase 3: main area with 4 stats cards, recent collections grid, pinned items and 10 most recent items
