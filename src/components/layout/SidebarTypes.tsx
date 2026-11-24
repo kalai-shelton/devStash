@@ -17,8 +17,8 @@ import {
 import {
   ITEM_TYPE_TEXT_COLORS,
   getItemTypeHref,
-  getItemTypeIcon,
 } from "@/lib/constants/item-types";
+import { ItemTypeIcon } from "@/components/shared/ItemTypeIcon";
 import type { MockItemType } from "@/lib/mock-data";
 
 interface SidebarTypesProps {
@@ -38,23 +38,23 @@ export function SidebarTypes({ types }: SidebarTypesProps) {
       <CollapsibleContent>
         <SidebarGroupContent>
           <SidebarMenu>
-            {types.map((type) => {
-              const Icon = getItemTypeIcon(type.icon);
-              return (
-                <SidebarMenuItem key={type.id}>
-                  <SidebarMenuButton
-                    tooltip={type.label}
-                    render={<Link href={getItemTypeHref(type.name)} />}
-                  >
-                    <Icon className={ITEM_TYPE_TEXT_COLORS[type.name]} />
-                    <span>{type.label}</span>
-                  </SidebarMenuButton>
-                  <SidebarMenuBadge className="text-muted-foreground">
-                    {type.itemCount}
-                  </SidebarMenuBadge>
-                </SidebarMenuItem>
-              );
-            })}
+            {types.map((type) => (
+              <SidebarMenuItem key={type.id}>
+                <SidebarMenuButton
+                  tooltip={type.label}
+                  render={<Link href={getItemTypeHref(type.name)} />}
+                >
+                  <ItemTypeIcon
+                    icon={type.icon}
+                    className={ITEM_TYPE_TEXT_COLORS[type.name]}
+                  />
+                  <span>{type.label}</span>
+                </SidebarMenuButton>
+                <SidebarMenuBadge className="text-muted-foreground">
+                  {type.itemCount}
+                </SidebarMenuBadge>
+              </SidebarMenuItem>
+            ))}
           </SidebarMenu>
         </SidebarGroupContent>
       </CollapsibleContent>

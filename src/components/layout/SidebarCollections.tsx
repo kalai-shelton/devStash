@@ -14,6 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { sortCollectionsByRecent } from "@/lib/dashboard";
 import type { MockCollection, MockItem } from "@/lib/mock-data";
 
 interface SidebarCollectionsProps {
@@ -25,12 +26,6 @@ interface CollectionListProps {
   title: string;
   collections: MockCollection[];
   showFavoriteStar?: boolean;
-}
-
-function getLastActivity(collectionId: string, items: MockItem[]): number {
-  return items
-    .filter((item) => item.collectionIds.includes(collectionId))
-    .reduce((latest, item) => Math.max(latest, Date.parse(item.updatedAt)), 0);
 }
 
 function CollectionList({
@@ -76,11 +71,10 @@ export function SidebarCollections({
   items,
 }: SidebarCollectionsProps) {
   const favorites = collections.filter((collection) => collection.isFavorite);
-  const recent = collections
-    .filter((collection) => !collection.isFavorite)
-    .sort(
-      (a, b) => getLastActivity(b.id, items) - getLastActivity(a.id, items)
-    );
+  const recent = sortCollectionsByRecent(
+    collections.filter((collection) => !collection.isFavorite),
+    items
+  );
 
   return (
     <Collapsible

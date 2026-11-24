@@ -29,9 +29,25 @@ export const ITEM_TYPE_TEXT_COLORS: Record<string, string> = {
   link: "text-link",
 };
 
-export function getItemTypeIcon(iconName: string): LucideIcon {
-  return ITEM_TYPE_ICONS[iconName] ?? File;
-}
+export const ITEM_TYPE_BORDER_COLORS: Record<string, string> = {
+  snippet: "border-l-snippet",
+  prompt: "border-l-prompt",
+  command: "border-l-command",
+  note: "border-l-note",
+  file: "border-l-file",
+  image: "border-l-image",
+  link: "border-l-link",
+};
+
+export const ITEM_TYPE_BG_COLORS: Record<string, string> = {
+  snippet: "bg-snippet/10",
+  prompt: "bg-prompt/10",
+  command: "bg-command/10",
+  note: "bg-note/10",
+  file: "bg-file/10",
+  image: "bg-image/10",
+  link: "bg-link/10",
+};
 
 export function getItemTypeHref(typeName: string): string {
   return `/items/${typeName}s`;
